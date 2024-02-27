@@ -1,0 +1,42 @@
+<div class="container">
+    <filter-table
+    class="filter"
+    [showTableMenu]="true"
+    [page]="pager.page"
+    [pageLength]="pager.pageLength"
+    (pageChange)="pageChange($event)"
+    (pageLenChange)="pageLenChange($event)"
+    (search)="search($event)"
+    mode="server"
+  ></filter-table>
+  <div class="button-add">
+    <button (click)="addFinancialProduct()">Agregar</button>
+  </div>
+    <div class="table-container">
+        <!-- <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"> -->
+        <table>
+            <thead>
+                <tr>
+                    <th>{{financialProd['logo']}}</th>
+                    <th>{{financialProd['name']}}</th>
+                    <th>{{financialProd['description']}}</th>
+                    <th>{{financialProd['date_release']}}</th>
+                    <th>{{financialProd['date_revision']}}</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="!(isLoading$ | async)">
+                <tr *ngFor="let financialProduct of financialProducts">
+                    <td>
+                        <img class="logo-table" alt="Icon" [src]="financialProduct?.logo">
+                    </td>
+                    <td>{{financialProduct.name}}</td>
+                    <td>{{financialProduct.description}}</td>
+                    <td>{{financialProduct.date_release | dateEs: "date"}}</td>
+                    <td>{{financialProduct.date_revision | dateEs : "date"}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <app-table-info [info]="pager.info" [empty]="financialProducts.length === 0"></app-table-info>
+    </div>
+
+</div>
