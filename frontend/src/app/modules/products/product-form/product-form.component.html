@@ -1,0 +1,46 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="ID">ID</label>
+      <input type="ID" id="ID" formControlName="ID">
+      <div *ngIf="productForm.get('ID')?.invalid && productForm.get('ID')?.touched">
+        <div *ngIf="productForm.get('ID')?.errors?.['required']">ID is required.</div>
+        <div *ngIf="productForm.get('ID')?.errors?.['ID']">Invalid ID format.</div>
+      </div>
+    </div>
+    <div>
+      <label for="name">Nombre</label>
+      <input type="name" id="name" formControlName="name">
+      <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+        <div *ngIf="productForm.get('name')?.errors?.['required']">name is required.</div>
+      </div>
+    </div>
+    <div>
+        <label for="Description">Descripcion</label>
+        <input type="Description" id="Description" formControlName="Description">
+        <div *ngIf="productForm.get('Description')?.invalid && productForm.get('Description')?.touched">
+          <div *ngIf="productForm.get('Description')?.errors?.['required']">Description is required.</div>
+        </div>
+      </div>
+      <div>
+        <label for="logo">Logo</label>
+        <input type="logo" id="logo" formControlName="logo">
+        <div *ngIf="productForm.get('logo')?.invalid && productForm.get('logo')?.touched">
+          <div *ngIf="productForm.get('logo')?.errors?.['required']">logo is required.</div>
+        </div>
+      </div>
+      <div>
+        <label for="date">Fecha liberacion</label>
+        <input type="date" id="date" formControlName="date">
+        <div *ngIf="productForm.get('date')?.invalid && productForm.get('date')?.touched">
+          <div *ngIf="productForm.get('date')?.errors?.['required']">date is required.</div>
+        </div>
+      </div>
+      <div>
+        <label for="date2">Fecha revision</label>
+        <input type="date2" id="date2" formControlName="date2">
+        <div *ngIf="productForm.get('date2')?.invalid && productForm.get('date2')?.touched">
+          <div *ngIf="productForm.get('date2')?.errors?.['required']">date2 is required.</div>
+        </div>
+      </div>
+    <button type="submit" [disabled]="productForm.invalid">Login</button>
+  </form>

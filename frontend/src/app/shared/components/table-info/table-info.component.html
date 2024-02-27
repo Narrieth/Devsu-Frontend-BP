@@ -1,0 +1,14 @@
+<ng-container *ngIf="loading; else templateName">
+    <div class="text-center"><app-loader></app-loader></div>
+  </ng-container>
+  
+  <ng-template #templateName>
+    <ng-container *ngIf="empty">
+      <div class="text-center"> Ningún dato disponible en esta tabla</div>
+      <div class="px-3 py-2"> Mostrando registros del 0 al 0 </div>
+    </ng-container>
+    <ng-container *ngIf="total && !empty">
+      <div class="px-3 py-2"> Mostrando registros del {{ startPage }} al {{ finishPage }} de un total de {{ total }} registros </div>
+    </ng-container>
+  </ng-template>
+  
